@@ -1,37 +1,39 @@
+import { GameobjectManager } from "../gameobject/gameobject-manager.js";
 // 定义 Scene（场景）类
 class Scene {
+    name
+    gameobjectManager
+    
     constructor(name) {
         this.name = name;
-        this.gameObjects = [];
-    }
-
-    addGameObject(gameObject) {
-        this.gameObjects.push(gameObject);
-    }
-
-    update() {
-        for (let i = 0; i < this.gameObjects.length; i++) {
-            this.gameObjects[i].update();
-        }
+        this.gameobjectManager = new GameobjectManager()
     }
 }
 
 // 定义 SceneManager (场景管理器) 类
 class SceneManager {
+    scenes
+    activeScene
+
     constructor() {
-        this.scenes = {};
+        this.scenes = new Map;
         this.activeScene = null;
     }
 
-    addScene(name, scene) {
-        this.scenes[name] = scene;
+    addScene(name, scene = new Scene(name)) {
+        this.scenes.set(name, scene)
+        this.activeScene = scene
     }
 
     setActiveScene(name) {
-        if (name in this.scenes) {
-            this.activeScene = this.scenes[name];
-        } else {
-            console.error(`Scene "${name}" does not exist.`);
-        }
+        const scene = this.scenes.get(name)
+        if (scene) {
+            this.activeScene = scene
+        } 
     }
+}
+
+export {
+    // Scene,
+    SceneManager
 }

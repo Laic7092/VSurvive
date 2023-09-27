@@ -1,8 +1,11 @@
+import { SceneManager } from "../scene/scene-manager.js";
 // 定义 Engine（引擎）类
 class Engine {
-    // constructor() {
-    //     this.sceneManager = new SceneManager()
-    // }
+    sceneManager
+
+    constructor() {
+        this.sceneManager = new SceneManager()
+    }
 
     // update() {
     //     if (this.sceneManager.activeScene) {
@@ -10,3 +13,5 @@ class Engine {
     //     }
     // }
 }
+
+export default Engine

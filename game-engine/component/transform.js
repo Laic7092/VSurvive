@@ -1,4 +1,5 @@
-import Component from "./compopnent-manager.js";
+import Component from "./component.js";
+
 class Vector2 {
     constructor(x = 0, y = 0) {
         return {
@@ -14,9 +15,10 @@ class Transform extends Component{
     // rotation
 
     constructor(parent = null, position = new Vector2()) {
+        super('Transform')
         this.position = position
         this.parent = parent
     }
 }
 
-let a = new Transform()
+export default Transform

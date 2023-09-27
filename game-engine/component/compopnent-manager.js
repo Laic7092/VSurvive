@@ -1,36 +1,29 @@
-// 定义 Component（组件）类
-class Component {
-    name
-    active
-    constructor() {
-    }
-
-    update() {
-        console.log('This is the base Component class.');
-    }
-}
+import Transform from "./transform.js"
 
 class ComponentManager {
     components
     constructor() {
-        this.components = {}
+        this.components = new Map()
+        this.addComponent('Transform', new Transform())
     }
 
     addComponent(name, component) {
-        this.components[name] = component
+        this.components.set(name, component)
     }
 
     removeComponent(name) {
-        delete this.components[name]
+        this.components.delete(name)
     }
 
-    activateComponent(name) {
-        this.components[name].active = true
-    }
+//     activateComponent(name) {
+//         this.components[name].active = true
+//     }
 
-    deActiveComponent(name) {
-        this.components[name].active = false
-    }
+//     deActiveComponent(name) {
+//         this.components[name].active = false
+//     }
 }
 
-export default Component
+// import Transform from "./transform.js";
+
+export default ComponentManager
