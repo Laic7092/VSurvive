@@ -1,10 +1,18 @@
 import Transform from "./transform.js"
+import IUpdatable from "../interface/IUpdatable.js"
 
-class ComponentManager {
+class ComponentManager extends IUpdatable{
     components
     constructor() {
+        super()
         this.components = new Map()
         this.addComponent('Transform', new Transform())
+    }
+
+    update() {
+        this.components.forEach(component => {
+            component.update()
+        })
     }
 
     addComponent(name, component) {

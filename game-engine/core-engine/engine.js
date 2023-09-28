@@ -8,8 +8,9 @@ class Engine {
     }
 
     update() {
-        if (this.sceneManager.activeScene) {
-            this.sceneManager.activeScene.update();
+        const activeScene = this.sceneManager.activeScene
+        if (activeScene) {
+            this.sceneManager.update();
         }
     }
 }

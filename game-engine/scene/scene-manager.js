@@ -1,12 +1,21 @@
 import Scene from "./scene.js";
+import IUpdatable from "../interface/IUpdatable.js";
 // 定义 SceneManager (场景管理器) 类
-class SceneManager {
+class SceneManager extends IUpdatable{
     scenes
     activeScene
 
     constructor() {
-        this.scenes = new Map;
+        super()
+        this.scenes = new Map();
         this.activeScene = null;
+    }
+
+    update() {
+        const activeScene = this.activeScene
+        if (activeScene) {
+            activeScene.gameobjectManager.update()
+        }
     }
 
     addScene(name, scene = new Scene(name)) {

@@ -8,10 +8,6 @@ class Scene {
         this.name = name;
         this.gameobjectManager = new GameobjectManager()
     }
-
-    update() {
-
-    }
 }
 
 export default Scene

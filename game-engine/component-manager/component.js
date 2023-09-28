@@ -2,10 +2,14 @@
 class Component {
     name
     active
-    
+
     constructor(name) {
         this.active = true
         this.name = name
+    }
+
+    update() {
+        console.log('hh')
     }
 }
 
