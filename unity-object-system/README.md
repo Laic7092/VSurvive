@@ -1,0 +1,1 @@
+这是从`unity`官方文档复制到`chatgpt`得到的粗略核心类型,主要目的是想学习一下`Object`,`GameObject`.`Component`,`Transform`这几个核心类之间该如何组织
