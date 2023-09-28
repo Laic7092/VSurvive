@@ -6,15 +6,15 @@ engine.sceneManager.addScene('testScene')
 
 // debugger
 let a = engine.sceneManager.activeScene.gameobjectManager
-for (let i = 0; i < 80; i++) {
-    for (let j = 0; j < 60; j++) {
+for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 6; j++) {
         let parent = {}
-        let position = {x: 10*i, y: 10*j}
+        let position = {x: 100*i, y: 100*j}
         let param = {
             parent,
             position
         }
-        a.addGameobject(`test${i}${j}`, param)
+        a.addGameobject(`(${i},${j})`, param)
     }
 
 }
@@ -26,10 +26,11 @@ let b = a.gameobjects.get('testObj')
 let c = b.componentManager.components.get('Transform')
 // debugger
 
-a.test()
-
+a.addRenderer()
+a.addScript()
+console.log(engine)
 setInterval(() => {
     engine.update()
     engine.render()
-    // console.log(engine)
-}, 1000);
+
+}, 20);

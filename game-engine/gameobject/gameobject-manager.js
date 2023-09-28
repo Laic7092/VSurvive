@@ -9,9 +9,15 @@ class GameobjectManager extends IUpdatable{
         this.gameobjects = new Map()
     }
 
-    test() {
+    addRenderer() {
         this.gameobjects.forEach(gameobject => {
-            gameobject.componentManager.addComponent('Renderer', { gameobject })
+            gameobject.componentManager.addComponent('Renderer')
+        })
+    }
+
+    addScript() {
+        this.gameobjects.forEach(gameobject => {
+            gameobject.componentManager.addComponent('Player')
         })
     }
 

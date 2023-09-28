@@ -1,4 +1,5 @@
 import SceneManager from "../scene/scene-manager.js";
+import { clear } from "./panel.js";
 // 定义 Engine（引擎）类
 class Engine {
     sceneManager
@@ -12,6 +13,7 @@ class Engine {
     }
 
     render() {
+        clear()
         this.sceneManager.render();
     }
 }
