@@ -6,6 +6,11 @@ class Engine {
 
     constructor() {
         this.sceneManager = new SceneManager()
+        this.test = () => {
+            this.update()
+            this.render()
+            window.requestAnimationFrame(this.test)
+        }
     }
 
     update() {

@@ -29,8 +29,9 @@ let c = b.componentManager.components.get('Transform')
 a.addRenderer()
 a.addScript()
 console.log(engine)
-setInterval(() => {
-    engine.update()
-    engine.render()
+// setInterval(() => {
+//     engine.update()
+//     engine.render()
 
-}, 20);
+// }, 200);
+window.requestAnimationFrame(engine.test)
