@@ -9,7 +9,7 @@ class GameObject {
     constructor(name, param) {
         this.name = name
         this.activate = true
-        this.componentManager = new ComponentManager(param)
+        this.componentManager = new ComponentManager(this, param)
     }
 }
 

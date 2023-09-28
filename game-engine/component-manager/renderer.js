@@ -1,21 +1,14 @@
 import Component from "./component.js";
-
-let ctx = null
-window.addEventListener('load', () => {
-    let a = document.querySelector('#gameCanvas')
-    ctx = a.getContext("2d")
-})
+import { ctx } from "../core-engine/panel.js";
 
 class Renderer extends Component{
-    gameobject
     transform
     color
     shape
 
-    constructor({ gameobject }) {
+    constructor(componentManager) {
         // debugger
-        super('Render')
-        this.gameobject = gameobject
+        super('Render', componentManager)
         this.transform = this.getTransform()
         this.color = '#222'
         this.shape = 'cirle'
@@ -25,11 +18,11 @@ class Renderer extends Component{
         const position = this.getPosition()
         const { x, y  } = position
         ctx.strokeStyle = "red";
-        ctx.strokeRect(x, y, 1, 1);
+        ctx.strokeRect(x, y, 3, 3);
     }
 
     getTransform() {
-        return this.gameobject.componentManager.getComponent('Transform')
+        return this.componentManager.getComponent('Transform')
     }
 
     getPosition() {

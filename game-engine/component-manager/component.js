@@ -2,10 +2,12 @@
 class Component {
     name
     active
+    componentManager
 
-    constructor(name) {
+    constructor(name, componentManager) {
         this.active = true
         this.name = name
+        this.componentManager = componentManager
     }
 
     update() {

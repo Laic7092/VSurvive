@@ -1,21 +1,27 @@
 import Transform from "./transform.js"
 import Renderer from "./renderer.js"
-import Script from "./script.js"
 
 import IUpdatable from "../interface/IUpdatable.js"
 
+import Player from "../diy-script/player.js"
+
 const componentConstructors = new Map()
+
 componentConstructors.set('Transform', Transform)
 componentConstructors.set('Renderer', Renderer)
-componentConstructors.set('Script', Script)
+
+componentConstructors.set('Player', Player)
 
 class ComponentManager extends IUpdatable{
     components
+    gameobject
+    transform
 
-    constructor(param) {
+    constructor(gameobject, param) {
         super()
         this.components = new Map()
-        this.addComponent('Transform', param)
+        this.gameobject = gameobject
+        this.transform = this.addComponent('Transform', param)
     }
 
     update() {
@@ -31,10 +37,12 @@ class ComponentManager extends IUpdatable{
         }
     }
 
-    addComponent(name, param) {
+    addComponent(name, param, componentManager = this) {
         const componentConstructor = componentConstructors.get(name)
         if (componentConstructor) {
-            this.components.set(name, new componentConstructor(param))
+            const component = new componentConstructor(componentManager, param)
+            this.components.set(name, component)
+            return component
         }
     }
 

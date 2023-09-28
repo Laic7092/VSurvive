@@ -14,8 +14,8 @@ class Transform extends Component{
     parent
     // rotation
 
-    constructor({ parent = null, position = new Vector2()}) {
-        super('Transform')
+    constructor(componentManager, { parent = null, position = new Vector2()}) {
+        super('Transform', componentManager)
         this.position = position
         this.parent = parent
     }
