@@ -18,6 +18,13 @@ class SceneManager extends IUpdatable{
         }
     }
 
+    render() {
+        const activeScene = this.activeScene
+        if (activeScene) {
+            activeScene.gameobjectManager.render()
+        }
+    }
+
     addScene(name, scene = new Scene(name)) {
         this.scenes.set(name, scene)
         this.activeScene = scene

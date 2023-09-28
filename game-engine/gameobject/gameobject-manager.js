@@ -9,7 +9,14 @@ class GameobjectManager extends IUpdatable{
         this.gameobjects = new Map()
     }
 
-    addGameobject(name, gameobject = new GameObject(name)) {
+    test() {
+        this.gameobjects.forEach(gameobject => {
+            gameobject.componentManager.addComponent('Renderer', { gameobject })
+        })
+    }
+
+    addGameobject(name, param) {
+        const gameobject = new GameObject(name, param)
         this.gameobjects.set(name, gameobject)
     }
 
@@ -19,7 +26,17 @@ class GameobjectManager extends IUpdatable{
 
     update() {
         this.gameobjects.forEach(gameobject => {
-            gameobject.componentManager.update()
+            if (gameobject.activate) {
+                gameobject.componentManager.update()
+            }
+        })
+    }
+
+    render() {
+        this.gameobjects.forEach(gameobject => {
+            if (gameobject.activate) {
+                gameobject.componentManager.render()
+            }
         })
     }
 

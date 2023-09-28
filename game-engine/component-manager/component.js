@@ -9,7 +9,8 @@ class Component {
     }
 
     update() {
-        console.log('hh')
+        //console.log('hh')
+
     }
 }
 

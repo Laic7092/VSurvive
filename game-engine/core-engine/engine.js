@@ -8,10 +8,11 @@ class Engine {
     }
 
     update() {
-        const activeScene = this.sceneManager.activeScene
-        if (activeScene) {
-            this.sceneManager.update();
-        }
+        this.sceneManager.update();
+    }
+
+    render() {
+        this.sceneManager.render();
     }
 }
 
