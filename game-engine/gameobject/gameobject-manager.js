@@ -1,20 +1,6 @@
-import ComponentManager from "../component/compopnent-manager.js";
-
-// 定义 GameObject（游戏对象）类
-class GameObject {
-    name
-    activate
-    componentManager
-    constructor(name) {
-        this.name = name
-        this.activate = true
-        this.componentManager = new ComponentManager()
-    }
-}
-
 class GameobjectManager {
     gameobjects
-    
+
     constructor() {
         this.gameobjects = new Map()
     }
@@ -36,7 +22,4 @@ class GameobjectManager {
 //     }
 }
 
-export {
-    GameObject,
-    GameobjectManager
-}
+export default GameobjectManager

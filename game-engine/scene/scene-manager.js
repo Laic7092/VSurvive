@@ -1,15 +1,4 @@
-import { GameobjectManager } from "../gameobject/gameobject-manager.js";
-// 定义 Scene（场景）类
-class Scene {
-    name
-    gameobjectManager
-    
-    constructor(name) {
-        this.name = name;
-        this.gameobjectManager = new GameobjectManager()
-    }
-}
-
+import Scene from "./scene.js";
 // 定义 SceneManager (场景管理器) 类
 class SceneManager {
     scenes
@@ -29,11 +18,8 @@ class SceneManager {
         const scene = this.scenes.get(name)
         if (scene) {
             this.activeScene = scene
-        } 
+        }
     }
 }
 
-export {
-    // Scene,
-    SceneManager
-}
+export default SceneManager
