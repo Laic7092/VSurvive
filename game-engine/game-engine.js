@@ -34,4 +34,6 @@ console.log(engine)
 //     engine.render()
 
 // }, 200);
-window.requestAnimationFrame(engine.test)
+window.onload = () => {
+    window.requestAnimationFrame(engine.test)
+}
