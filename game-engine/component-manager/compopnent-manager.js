@@ -4,13 +4,14 @@ import Renderer from "./renderer.js"
 import IUpdatable from "../interface/IUpdatable.js"
 
 import Player from "../diy-script/player.js"
-
+import Monster from "../diy-script/monster.js"
 const componentConstructors = new Map()
 
 componentConstructors.set('Transform', Transform)
 componentConstructors.set('Renderer', Renderer)
 
 componentConstructors.set('Player', Player)
+componentConstructors.set('Monster', Monster)
 
 class ComponentManager extends IUpdatable{
     components

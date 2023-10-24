@@ -11,19 +11,20 @@ class GameobjectManager extends IUpdatable{
 
     addRenderer() {
         this.gameobjects.forEach(gameobject => {
-            gameobject.componentManager.addComponent('Renderer')
+            gameobject.componentManager.addComponent('Renderer',{color: '#000'})
         })
     }
 
     addScript() {
         this.gameobjects.forEach(gameobject => {
-            gameobject.componentManager.addComponent('Player')
+            gameobject.componentManager.addComponent('Monster')
         })
     }
 
     addGameobject(name, param) {
         const gameobject = new GameObject(name, param)
         this.gameobjects.set(name, gameobject)
+        return gameobject
     }
 
     removeGameobject(name) {

@@ -4,7 +4,6 @@ console.log("Hello World!")
 const engine = new Engine()
 engine.sceneManager.addScene('testScene')
 
-// debugger
 let a = engine.sceneManager.activeScene.gameobjectManager
 for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 6; j++) {
@@ -18,22 +17,16 @@ for (let i = 0; i < 8; i++) {
     }
 
 }
-a.addGameobject('testObj', {})
-
-let b = a.gameobjects.get('testObj')
-// debugger
-
-let c = b.componentManager.components.get('Transform')
-// debugger
-
 a.addRenderer()
 a.addScript()
+function addPlayer() {
+    let obj = a.addGameobject((999,999), {parent: {},position: {x:40,y:40}})
+    debugger
+    obj.componentManager.addComponent('Player')
+    obj.componentManager.addComponent('Renderer')
+}
+addPlayer()
 console.log(engine)
-// setInterval(() => {
-//     engine.update()
-//     engine.render()
-
-// }, 200);
 window.onload = () => {
     window.requestAnimationFrame(engine.test)
 }

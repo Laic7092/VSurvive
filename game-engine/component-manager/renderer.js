@@ -6,18 +6,19 @@ class Renderer extends Component{
     color
     shape
 
-    constructor(componentManager) {
+    constructor(componentManager, param = {}) {
         // debugger
         super('Render', componentManager)
         this.transform = this.getTransform()
-        this.color = '#222'
+        const { color } = param
+        this.color = color || 'red'
         this.shape = 'cirle'
     }
 
     render() {
         const position = this.getPosition()
         const { x, y  } = position
-        ctx.strokeStyle = "red";
+        ctx.strokeStyle = this.color;
         ctx.strokeRect(x, y, 3, 3);
     }
 

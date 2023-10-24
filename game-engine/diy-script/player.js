@@ -1,9 +1,9 @@
 import Component from "../component-manager/component.js"
-
 function player(componentManager) {
     const transform = componentManager.transform
     const position = transform.position
     const { x, y } = position
+    let speed = 3
     // if (x === 100 && y === 100) {
     //     debugger
     // }
@@ -16,20 +16,37 @@ function player(componentManager) {
     }
 
     const update = () => {
-        let rd = Math.round(Math.random())
-        if (rd === 1) {
-            position.x += 5
-            position.y -= 5
+        const key = Object.prototype.Input.getKeyDown()
+        if(key) {
+            switch (key) {
+                case 'a':
+                    move(-1,0)
+                    break;
+                case 's':
+                    move(0,1)
+                    break;
+                case 'd':
+                    move(1,0)
+                    break;
+                case 'w':
+                    move(0,-1)
+                    break;
+
+                default:
+                    console.log('key',key);
+
+                    break;
+            }
         }
-        else {
-            position.x -= 5
-            position.y += 5
-        }
-        //console.log(a, test())
     }
 
     function test() {
         return b
+    }
+
+    function move(x = 0, y = 0) {
+        position.x += x*speed;
+        position.y += y*speed
     }
 
     return update
