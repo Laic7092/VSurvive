@@ -2,32 +2,21 @@ import Component from "./component.js";
 import { ctx } from "../core-engine/panel.js";
 
 class Renderer extends Component{
-    transform
     color
     shape
 
-    constructor(componentManager, param = {}) {
+    constructor(gameObject, transform, param = {}) {
         // debugger
-        super('Render', componentManager)
-        this.transform = this.getTransform()
+        super('Render', gameObject, transform)
         const { color } = param
         this.color = color || 'red'
         this.shape = 'cirle'
     }
 
     render() {
-        const position = this.getPosition()
-        const { x, y  } = position
+        const { x, y  } = this.transform.position
         ctx.strokeStyle = this.color;
         ctx.strokeRect(x, y, 3, 3);
-    }
-
-    getTransform() {
-        return this.componentManager.getComponent('Transform')
-    }
-
-    getPosition() {
-        return this.transform.position
     }
 }
 

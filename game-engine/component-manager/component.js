@@ -2,12 +2,14 @@
 class Component {
     name
     active
-    componentManager
+    gameobject
+    transform
 
-    constructor(name, componentManager) {
+    constructor(name, gameobject, transform) {
         this.active = true
         this.name = name
-        this.componentManager = componentManager
+        this.gameobject = gameobject
+        this.transform = transform
     }
 
     update() {

@@ -4,7 +4,6 @@ import { clear } from "./panel.js";
 function Input() {
     let _key = ''
     const keyDown = (e) => {
-        // debugger
         _key = e.key.toLowerCase()
     }
 
@@ -22,24 +21,6 @@ function Input() {
 
 const ipt = new Input()
 
-// const Input = {
-//     _isKeyDown: false,
-//     _key: '',
-//     keyDown(e) {
-//         debugger
-//         this._isKeyDown = true
-//         this._key = e.key.toLowerCase()
-//     },
-//     getKeyDown: () => {
-//         // debugger
-//         let a = this
-//         // return _key
-//     },
-//     clearKey: () => {
-//         _key = ''
-//     }
-// }
-
 window.addEventListener('keydown', ipt.keyDown)
 Object.prototype.Input = ipt
 // window.Input = Input
@@ -49,11 +30,11 @@ class Engine {
 
     constructor() {
         this.sceneManager = new SceneManager()
-        this.test = () => {
+        this.gameLoop = () => {
             this.update()
             this.render()
             ipt.clearKey()
-            window.requestAnimationFrame(this.test)
+            window.requestAnimationFrame(this.gameLoop)
         }
     }
 

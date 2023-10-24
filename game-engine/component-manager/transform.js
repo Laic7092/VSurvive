@@ -12,10 +12,10 @@ class Vector2 {
 class Transform extends Component{
     position
     parent
-    // rotation
 
-    constructor(componentManager, { parent = null, position = new Vector2()}) {
-        super('Transform', componentManager)
+    constructor(gameobject, transform, { parent = null, position = new Vector2()}) {
+        super('Transform', gameobject)
+        this.transform = this
         this.position = position
         this.parent = parent
     }

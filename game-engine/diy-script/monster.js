@@ -1,6 +1,5 @@
 import Component from "../component-manager/component.js"
-function monster(componentManager) {
-    const transform = componentManager.transform
+function monster(gameobject, transform) {
     const position = transform.position
     const { x, y } = position
     let speed = 2
@@ -24,9 +23,9 @@ function monster(componentManager) {
 class Monster extends Component {
     update
 
-    constructor(componentManager, param) {
-        super('Monster', componentManager)
-        this.update = monster(componentManager)
+    constructor(gameobject, transform, param) {
+        super('Monster',gameobject, transform)
+        this.update = monster(gameobject, transform)
     }
 }
 

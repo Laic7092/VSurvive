@@ -1,16 +1,9 @@
 import Component from "../component-manager/component.js"
-function player(componentManager) {
-    const transform = componentManager.transform
+function player(gameobject, transform) {
     const position = transform.position
     const { x, y } = position
     let speed = 3
-    // if (x === 100 && y === 100) {
-    //     debugger
-    // }
     start()
-    let a = 1
-    const b = 100
-
     function start() {
         //console.log('start')
     }
@@ -33,15 +26,9 @@ function player(componentManager) {
                     break;
 
                 default:
-                    console.log('key',key);
-
                     break;
             }
         }
-    }
-
-    function test() {
-        return b
     }
 
     function move(x = 0, y = 0) {
@@ -55,9 +42,9 @@ function player(componentManager) {
 class Player extends Component {
     update
 
-    constructor(componentManager, param) {
-        super('Player', componentManager)
-        this.update = player(componentManager)
+    constructor(gameobject, transform, param) {
+        super('Player', gameobject, transform)
+        this.update = player(gameobject, transform)
     }
 }
 

@@ -14,14 +14,14 @@ class SceneManager extends IUpdatable{
     update() {
         const activeScene = this.activeScene
         if (activeScene) {
-            activeScene.gameobjectManager.update()
+            activeScene.update()
         }
     }
 
     render() {
         const activeScene = this.activeScene
         if (activeScene) {
-            activeScene.gameobjectManager.render()
+            activeScene.render()
         }
     }
 
