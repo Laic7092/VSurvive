@@ -2,7 +2,7 @@ import Component from "../component-manager/component.js"
 function player(gameobject, transform) {
     const position = transform.position
     const { x, y } = position
-    let speed = 3
+    let speed = 10
     start()
     function start() {
         //console.log('start')

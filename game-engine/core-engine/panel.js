@@ -5,7 +5,7 @@ window.addEventListener('load', () => {
 })
 
 function clear() {
-    ctx.clearRect(0, 0, 800, 600)
+    ctx.clearRect(0, 0, 3200, 1800)
 }
 
 export {

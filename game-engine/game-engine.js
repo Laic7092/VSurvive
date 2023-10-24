@@ -4,26 +4,33 @@ const engine = new Engine()
 engine.sceneManager.addScene('mainScene')
 
 let a = engine.sceneManager.activeScene
-for (let i = 0; i < 8; i++) {
-    for (let j = 0; j < 6; j++) {
-        let parent = {}
-        let position = {x: 100*i, y: 100*j}
-        let param = {
-            parent,
-            position
-        }
-        a.addGameobject(`(${i},${j})`, a, param)
-    }
-
-}
-a.addRenderer()
-a.addScript()
 function addPlayer() {
-    let obj = a.addGameobject((999,999),a, {parent: {},position: {x:40,y:40}})
+    let obj = a.addGameobject('player', a, { parent: {}, position: { x: 1600, y: 900 } })
     obj.addComponent(obj.gameobject, obj.transform, 'Player')
     obj.addComponent(obj.gameobject, obj.transform, 'Renderer')
 }
 addPlayer()
+const p = 10
+const q = 1
+let cnt = 0
+function addMonster(params) {
+    for (let i = 0; i < 320 * q; i++) {
+        for (let j = 0; j < 180 * q; j++) {
+            let parent = {}
+            let position = { x: i * p, y: j * p }
+            let param = {
+                parent,
+                position
+            }
+            const gameobject = a.addGameobject(cnt++, a, param)
+            gameobject.addComponent(gameobject, gameobject.transform, 'Renderer', { color: '#000' })
+            gameobject.addComponent(gameobject, gameobject.transform, 'Monster', {})
+
+        }
+
+    }
+}
+addMonster()
 console.log(engine)
 window.onload = () => {
     window.requestAnimationFrame(engine.gameLoop)

@@ -18,6 +18,10 @@ class Scene extends IUpdatable {
         return gameobject
     }
 
+    getGameobject(name) {
+        return this.gameobjects.get('player')
+    }
+
     removeGameobject(name) {
         this.gameobjects.delete(name)
     }
@@ -45,7 +49,6 @@ class Scene extends IUpdatable {
     */
     addRenderer() {
         this.gameobjects.forEach(gameobject => {
-            gameobject.addComponent(gameobject, gameobject.transform, 'Renderer', {color: '#000'})
         })
     }
     /**
@@ -55,7 +58,6 @@ class Scene extends IUpdatable {
     */
     addScript() {
         this.gameobjects.forEach(gameobject => {
-            gameobject.addComponent(gameobject, gameobject.transform, 'Monster', {})
         })
     }
 }
