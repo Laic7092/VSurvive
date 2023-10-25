@@ -5,17 +5,17 @@ engine.sceneManager.addScene('mainScene')
 
 let a = engine.sceneManager.activeScene
 function addPlayer() {
-    let obj = a.addGameobject('player', a, { parent: {}, position: { x: 1600, y: 900 } })
+    let obj = a.addGameobject('player', a, { parent: {}, position: { x: 400, y: 300 } })
     obj.addComponent(obj.gameobject, obj.transform, 'Player')
     obj.addComponent(obj.gameobject, obj.transform, 'Renderer')
 }
 addPlayer()
-const p = 10
+const p = 100
 const q = 1
 let cnt = 0
 function addMonster(params) {
-    for (let i = 0; i < 320 * q; i++) {
-        for (let j = 0; j < 180 * q; j++) {
+    for (let i = 0; i <= 8 * q; i++) {
+        for (let j = 0; j <= 6 * q; j++) {
             let parent = {}
             let position = { x: i * p, y: j * p }
             let param = {

@@ -1,7 +1,7 @@
 import Component from "./component.js";
 import { ctx } from "../core-engine/panel.js";
 
-class Renderer extends Component{
+class Renderer extends Component {
     color
     shape
 
@@ -14,9 +14,12 @@ class Renderer extends Component{
     }
 
     render() {
-        const { x, y  } = this.transform.position
+        const { x, y } = this.transform.position
         ctx.strokeStyle = this.color;
-        ctx.strokeRect(x, y, 3, 3);
+        // ctx.strokeRect(x, y, 20, 20);
+        ctx.beginPath()
+        ctx.arc(x, y,10, 0, 2 * Math.PI)
+        ctx.stroke()
     }
 }
 
