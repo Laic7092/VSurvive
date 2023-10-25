@@ -6,21 +6,25 @@ import IUpdatable from "../interface/IUpdatable.js"
 import Player from "../diy-script/player.js"
 import Monster from "../diy-script/monster.js"
 const componentConstructors = new Map()
-
+const subjectComponents = new Set()
 componentConstructors.set('Transform', Transform)
 componentConstructors.set('Renderer', Renderer)
 
 componentConstructors.set('Player', Player)
 componentConstructors.set('Monster', Monster)
+subjectComponents.add('Player')
+subjectComponents.add('Monster')
 
 // 定义 GameObject（游戏对象）类
-class GameObject extends IUpdatable{
+class GameObject extends IUpdatable {
     name
     scene
     components
+    scripts
     transform
     gameobject
     activate
+    isSubject
 
     constructor(name, scene, param) {
         super()
@@ -30,12 +34,15 @@ class GameObject extends IUpdatable{
         this.gameobject = this
         this.transform = this.addComponent(this.gameobject, this.transform, 'Transform', param)
         this.activate = true
+        this.isSubject = false
     }
 
     update() {
-        this.components.forEach(component => {
-            component.update()
-        })
+        if (this.isSubject) {
+            this.scripts.forEach(component => {
+                component.update()
+            })
+        }
     }
 
     render() {
@@ -50,6 +57,11 @@ class GameObject extends IUpdatable{
         if (componentConstructor) {
             const component = new componentConstructor(gameobject, transform, param)
             this.components.set(name, component)
+            if (subjectComponents.has(name)) {
+                this.scripts = this.scripts ? this.scripts : new Map()
+                this.scripts.set(name, component)
+                this.isSubject = true
+            }
             return component
         }
     }

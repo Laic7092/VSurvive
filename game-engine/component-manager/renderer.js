@@ -15,10 +15,10 @@ class Renderer extends Component {
 
     render() {
         const { x, y } = this.transform.position
+        if (x > 900 || y > 700) return
         ctx.strokeStyle = this.color;
-        // ctx.strokeRect(x, y, 20, 20);
         ctx.beginPath()
-        ctx.arc(x, y,10, 0, 2 * Math.PI)
+        ctx.arc(x, y, 1, 0, 2 * Math.PI)
         ctx.stroke()
     }
 }

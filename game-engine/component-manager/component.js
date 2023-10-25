@@ -11,11 +11,6 @@ class Component {
         this.gameobject = gameobject
         this.transform = transform
     }
-
-    update() {
-        //console.log('hh')
-
-    }
 }
 
 export default Component

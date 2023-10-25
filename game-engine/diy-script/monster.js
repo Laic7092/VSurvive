@@ -2,10 +2,18 @@ import Component from "../component-manager/component.js"
 
 function monster(gameobject, transform) {
     const position = transform.position
-    let speed = 1
+    let speed = 2
     let player = null
     let playerTransform = null
-    let playerPosition = null;
+    let playerPosition = null
+
+    const span = 60
+    let counter = 0
+    let updateHz = 1
+    let maxD = 2000
+    let distance = null
+    let d = -1
+    let v2 = null;
 
     (function start() {
         player = gameobject.scene.getGameobject()
@@ -14,12 +22,22 @@ function monster(gameobject, transform) {
     })()
 
     const update = () => {
-        const distance = transform.getDistance(position, playerPosition)
-        const { d, ...v2 } = distance
-        if (d > 5) {
-            transform.moveTowards(v2, speed)
+        counter++
+        if (counter >= updateHz) {
+            counter = 0
+            distance = transform.getDistance(position, playerPosition)
+            d = distance.d
+            v2 = distance.v2
+            if (d > maxD) {
+                updateHz = span
+            } else if (updateHz === span) {
+                updateHz = 1
+            }
+            if (d > 10)
+                transform.moveTowards(v2, speed * updateHz)
         }
     }
+
 
     return update
 }

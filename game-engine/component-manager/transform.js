@@ -34,8 +34,10 @@ class Transform extends Component {
         const d = Math.sqrt(powX + powY)
         return {
             d,
-            y: ySub / d,
-            x: xSub / d
+            v2: {
+                y: ySub / d,
+                x: xSub / d
+            }
         }
     }
 }
