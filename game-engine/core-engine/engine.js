@@ -1,5 +1,5 @@
 import SceneManager from "../scene/scene-manager.js";
-import { clear } from "./panel.js";
+import { clear,trueRender } from "./panel.js";
 
 function Input() {
     let _key = ''
@@ -45,6 +45,7 @@ class Engine {
     render() {
         clear()
         this.sceneManager.render();
+        trueRender()
     }
 }
 export default Engine
