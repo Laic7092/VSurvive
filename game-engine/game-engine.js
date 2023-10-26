@@ -10,8 +10,8 @@ function addPlayer() {
     obj.addComponent(obj.gameobject, obj.transform, 'Renderer')
 }
 addPlayer()
-const p = 10
-const q = 46
+const p = 40
+const q = 15
 let cnt = 0
 function addMonster(params) {
     for (let i = 0; i <= 8 * q; i++) {

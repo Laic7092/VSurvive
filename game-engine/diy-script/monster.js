@@ -2,7 +2,7 @@ import Component from "../component-manager/component.js"
 
 function monster(gameobject, transform) {
     const position = transform.position
-    let speed = 2
+    let speed = 1
     let player = null
     let playerTransform = null
     let playerPosition = null
@@ -33,7 +33,7 @@ function monster(gameobject, transform) {
             } else if (updateHz === span) {
                 updateHz = 1
             }
-            if (d > 10)
+            if (d > 3)
                 transform.moveTowards(v2, speed * updateHz)
         }
     }
