@@ -9,7 +9,7 @@ function player(gameobject, transform) {
     }
 
     const update = () => {
-        const key = Object.prototype.Input.getKeyDown()
+        const key = Input.getKeyDown()
         if(key) {
             switch (key) {
                 case 'a':
