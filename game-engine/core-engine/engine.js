@@ -1,9 +1,13 @@
 import SceneManager from "../scene/scene-manager.js";
-import { clear,trueRender } from "./panel.js";
+// import { trueRender } from "./panel1.js";
+// import { trueRender } from "./panel.js";
+// import { trueRender } from "./ofscr-panel.js";
+import { trueRender } from "./ofscr-worker-panel.js";
 
-function Input() {
+function uInput() {
     let _key = ''
     const keyDown = (e) => {
+        e.preventDefault()
         _key = e.key.toLowerCase()
     }
 
@@ -19,11 +23,10 @@ function Input() {
     }
 }
 
-const ipt = new Input()
+const ipt = new uInput()
 
 window.addEventListener('keydown', ipt.keyDown)
-Object.prototype.Input = ipt
-// window.Input = Input
+window['Input'] = ipt
 // 定义 Engine（引擎）类
 class Engine {
     sceneManager
@@ -43,7 +46,6 @@ class Engine {
     }
 
     render() {
-        clear()
         this.sceneManager.render();
         trueRender()
     }
