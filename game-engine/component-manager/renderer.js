@@ -1,6 +1,8 @@
 import Component from "./component.js";
 import { ELes } from "../core-engine/panel.js";
-
+// import { ELes } from "../core-engine/ofscr-panel.js";
+// import { ELes } from "../core-engine/ofscr-worker-panel.js";
+// import { ELes } from "../core-engine/async-ofscr-worker-panel.js";
 class Renderer extends Component {
     color
     shape
@@ -13,16 +15,12 @@ class Renderer extends Component {
     }
 
     render() {
-        // return
+        // const { x, y } = this.transform.getXy()
         const { x, y } = this.transform.position
         if (x > 900 || y > 700) return
+        // console.log('aa', {x,y});
+
         ELes.push({ x, y })
-        // if ((x > 395 && x < 405) && (y > 295 && y < 305)) return
-        // ctx.strokeStyle = this.color
-        // // ctx.strokeRect(x, y, 10, 10)
-        // ctx.beginPath()
-        // ctx.arc(x, y, 20, 0, 2 * Math.PI)
-        // ctx.stroke()
     }
 }
 

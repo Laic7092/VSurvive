@@ -1,8 +1,7 @@
 import Component from "../component-manager/component.js"
 function player(gameobject, transform) {
     const position = transform.position
-    const { x, y } = position
-    let speed = 10
+    let speed = 500
     start()
     function start() {
         //console.log('start')
@@ -10,19 +9,20 @@ function player(gameobject, transform) {
 
     const update = () => {
         const key = Input.getKeyDown()
-        if(key) {
+
+        if (key) {
             switch (key) {
                 case 'a':
-                    move(-1,0)
+                    move(1, 0)
                     break;
                 case 's':
-                    move(0,1)
+                    move(0, -1)
                     break;
                 case 'd':
-                    move(1,0)
+                    move(-1, 0)
                     break;
                 case 'w':
-                    move(0,-1)
+                    move(0, 1)
                     break;
 
                 default:
@@ -32,8 +32,9 @@ function player(gameobject, transform) {
     }
 
     function move(x = 0, y = 0) {
-        position.x += x*speed;
-        position.y += y*speed
+        const deltaTime = window.deltaTime
+        const dt = speed * deltaTime
+        transform.moveTowards({ x, y }, dt)
     }
 
     return update

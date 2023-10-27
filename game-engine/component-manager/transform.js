@@ -20,6 +20,14 @@ class Transform extends Component {
         this.parent = parent
     }
 
+    getXy() {
+        const { x, y } = this.position
+        return {
+            x: x.toFixed(1),
+            y: y.toFixed(1)
+        }
+    }
+
     moveTowards(vector2, v) {
         const { x, y } = vector2
         this.position.x -= x * v
@@ -32,11 +40,15 @@ class Transform extends Component {
         const powX = Math.pow(xSub, 2)
         const powY = Math.pow(ySub, 2)
         const d = Math.sqrt(powX + powY)
+        // const x = Math.round(xSub / d)
+        const x = xSub / d
+        // const y = Math.round(ySub / d)
+        const y = ySub / d
+
         return {
             d,
             v2: {
-                y: ySub / d,
-                x: xSub / d
+                x, y
             }
         }
     }
