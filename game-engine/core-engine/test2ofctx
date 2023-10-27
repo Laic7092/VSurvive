@@ -1,0 +1,64 @@
+let ctx = null
+const ELes = new Map()
+const r = 20
+const cl = Math.PI * 2
+window.addEventListener('load', () => {
+    let a = document.querySelector('#gameCanvas')
+    ctx = a.getContext("2d")
+})
+
+
+// 创建 offscreen canvas
+const offscreenCanvas = new OffscreenCanvas(800, 600);
+const offscreenCanvas1 = new OffscreenCanvas(800, 600);
+
+// 获取 2D 上下文
+const offscreenContext = offscreenCanvas.getContext('2d');
+const offscreenContext1 = offscreenCanvas1.getContext('2d');
+offscreenContext.strokeStyle = 'black'
+offscreenContext1.strokeStyle = 'green'
+
+
+function clear() {
+    ctx.clearRect(0, 0, 800, 600);
+}
+
+function drawElements(ofctx, eles) {
+    ofctx.clearRect(0, 0, 800, 600);
+    ofctx.beginPath();
+    eles.forEach(item => {
+        const { x, y } = item;
+        ofctx.moveTo(x + r, y);
+        ofctx.arc(x, y, r, 0, cl);
+    });
+    ofctx.stroke();
+}
+
+async function trueRender() {
+    const e1 = ELes.slice(0, 24000);
+    const e2 = ELes.slice(24000);
+
+    await Promise.all([
+        new Promise(resolve => {
+            drawElements(offscreenContext, e1);
+            resolve();
+        }),
+        new Promise(resolve => {
+            drawElements(offscreenContext1, e2);
+            resolve();
+        })
+    ]);
+
+    ctx.drawImage(offscreenCanvas, 0, 0);
+    ctx.drawImage(offscreenCanvas1, 0, 0);
+
+    ELes.length = 0;
+}
+
+
+export {
+    clear,
+    ctx,
+    ELes,
+    trueRender
+}
