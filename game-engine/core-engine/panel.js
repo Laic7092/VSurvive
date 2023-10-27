@@ -13,6 +13,7 @@ function clear() {
 }
 
 function trueRender() {
+    clear()
     ctx.beginPath()
     ELes.forEach(item => {
         const { x, y } = item
@@ -24,8 +25,6 @@ function trueRender() {
 }
 
 export {
-    clear,
-    ctx,
     ELes,
     trueRender
 }
