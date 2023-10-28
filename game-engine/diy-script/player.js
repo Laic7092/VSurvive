@@ -7,10 +7,13 @@ function player(gameobject, transform) {
         //console.log('start')
     }
 
+
+    let cnt = 0
     const update = () => {
         const key = Input.getKeyDown()
 
         if (key) {
+            // console.log(++cnt,'trig')
             switch (key) {
                 case 'a':
                     move(1, 0)

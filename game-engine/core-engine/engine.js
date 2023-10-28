@@ -3,9 +3,13 @@ import { trueRender } from "./panel.js";
 // import { trueRender } from "./ofscr-panel.js";
 // import { trueRender } from "./ofscr-worker-panel.js";
 // import { trueRender } from "./async-ofscr-worker-panel.js";
+
+let evtNum = 0
+let loopNum = 0
 function uInput() {
     let _key = ''
     const keyDown = (e) => {
+        // console.log(++evtNum,'evt')
         _key = e.key.toLowerCase()
     }
 
@@ -34,6 +38,8 @@ class Engine {
     constructor() {
         this.sceneManager = new SceneManager()
         this.gameLoop = (curTm) => {
+            // if (++loopNum%1000 === 0)
+                // console.log(++loopNum,'loop')
             deltaTime = (curTm - lastTm) / 1000 // 转换为秒
             // console.log(deltaTime);
             this.update()
