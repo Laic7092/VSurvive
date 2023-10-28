@@ -17,10 +17,10 @@ window.addEventListener('load', () => {
 function clear(xl, yt, xr, yb) {
     ctx.clearRect(xl - r, yt - r, xr + r, yb + r)
     // console.log(arguments)
-    xl = 0
-    xr = 800
-    yt = 0
-    yb = 600
+    xl = 400
+    xr = 400
+    yt = 300
+    yb = 300
 }
 
 function trueRender() {
